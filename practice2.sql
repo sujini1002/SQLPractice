@@ -15,6 +15,10 @@ from employees e
 join titles t on e.emp_no = t.emp_no
 where t.to_date = '9999-01-01'
 ;
+-- 답
+select date_format(min(hire_date),'%Y년 %m월 %d일') as '가장 오래 근속 직원'
+from employees
+;
 -- 문제4.
 -- 현재 이 회사의 평균 연봉은 얼마입니까?
 select avg(salary)
@@ -28,6 +32,10 @@ where to_date='9999-01-01';
 -- 문제6.
 -- 최고 어린 사원의 나이와 최 연장자의 나이는?
 select timestampdiff(year,min(birth_date),now()) as '가장 나이 많은 사람', timestampdiff(year,max(birth_date),now()) as '가장 나이 적은 사람'
+from employees;
+-- 답
+select date_format(curdate(),'%Y') - date_format(min(birth_date),'%Y')as '가장 나이 많은 사람',
+	date_format(curdate(),'%Y') - date_format(max(birth_date),'%Y')as '가장 나이 적은 사람'
 from employees;
 
 

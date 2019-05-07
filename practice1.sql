@@ -26,6 +26,11 @@ select *
 from departments
 order by char_length(dept_name) desc;
 
+-- 답
+select distinct dept_name
+from departments
+order by length(dept_name) desc;
+
 -- 8번
 select count(*)
 from salaries
@@ -46,8 +51,14 @@ and to_date = '9999-01-01';
 -- 11번
 select emp_no,title,to_date
 from titles
-where emp_no = '13250'
+where emp_no = 13250
 order by to_date asc;
+
+-- 답
+select title, from_date, to_date
+from titles
+where emp_no = 13250
+order by from_date asc;
 
 select * from titles;
 select * from employees;
