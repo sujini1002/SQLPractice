@@ -1,6 +1,6 @@
 -- sql 연습 1
 -- 1번
-select concat(first_name, last_name) from employees where emp_no=19044;
+select concat(first_name,' ', last_name) from employees where emp_no=19044;
 -- 2번
 select concat(first_name, last_name) as '이름', gender as '성별', hire_date as '입사일'
 from employees
