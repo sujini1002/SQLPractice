@@ -151,7 +151,7 @@ select d.dept_name, avg(salary)
       join salaries c on a.emp_no = c.emp_no
       join departments d on b.dept_no = d.dept_no
       where b.to_date = '9999-01-01'
-       and c.to_date - '9999-01-01'      
+       and c.to_date = '9999-01-01'      
   group by d.dept_name
   order by avg(salary) desc; 
 
