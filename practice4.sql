@@ -37,26 +37,12 @@ from employees e, salaries s , dept_emp d,
     and d.to_date = '9999-01-01'
     group by d.dept_no) dept_avg
 where e.emp_no = s.emp_no
-and e.emp_no = d.emp_no
+and dept_avg.dept_no = d.dept_no
 and s.to_date = '9999-01-01'
 and d.to_date = '9999-01-01'
 and s.salary > dept_avg.avg_salary
 ;
-select e.emp_no,concat(e.first_name,' ',e.last_name) as 'name',s.salary
-from employees e, salaries s , dept_emp d
-where e.emp_no = s.emp_no
-and e.emp_no = d.emp_no
-and d.to_date = '9999-01-01'
-and s.to_date = '9999-01-01'
-and s.salary>
-(select d.dept_no,round(avg(s.salary))
-from dept_emp d, salaries s
-where d.emp_no = s.emp_no
-and d.to_date = '9999-01-01'
-and s.to_date = '9999-01-01'
-group by d.dept_no
-)
-;
+
 
 -- 문제4.
 -- 현재, 사원들의 사번, 이름, 매니저 이름, 부서 이름으로 출력해 보세요.
@@ -97,6 +83,7 @@ and d.dept_no = (select dept_no
 												 ) tmp
 										 )
 			)
+order by s.salary
 ;
 select dept_no
 				from dept_emp d, salaries s
